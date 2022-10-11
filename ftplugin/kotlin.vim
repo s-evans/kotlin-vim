@@ -10,6 +10,10 @@ let b:did_ftplugin = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+" For filename completion, prefer the .java extension over the .class
+" extension.
+set suffixes+=.class
+
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=//\ %s
 
@@ -17,7 +21,7 @@ setlocal formatoptions-=t formatoptions+=croqnl
 silent! setlocal formatoptions+=j
 
 setlocal includeexpr=substitute(v:fname,'\\.','/','g')
-setlocal suffixesadd=.kt
+setlocal suffixesadd=.kt,.java
 
 let b:undo_ftplugin = "setlocal comments< commentstring< ".
     \ "formatoptions< includeexpr< suffixesadd<"
